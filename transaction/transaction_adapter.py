@@ -1,0 +1,16 @@
+from transaction.transaction import Transaction
+from transaction.transaction_category import TransactionCategory
+
+
+class TransactionAdapter:
+    """Adapter that converts external transaction formats to Transaction."""
+
+    def __init__(self, external_transaction):
+        self.external_transaction = external_transaction
+
+    def to_transaction(self):
+        """Convert an external transaction to a standard Transaction."""
+        return Transaction(
+            self.external_transaction.amount,
+            TransactionCategory.INCOME
+        )
